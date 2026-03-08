@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}My Prediction History{% endblock %}
+
+{% block content %}
+<main class="bg-gradient-to-br from-blue-900 to-black py-16 px-4 text-white">
+<div class="max-w-5xl mx-auto bg-white p-6 shadow rounded">
+    <h2 class="text-2xl font-bold mb-6">🧠 My MRI Prediction History</h2>
+
+    {% if predictions %}
+        <div class="overflow-x-auto">
+            <table class="min-w-full text-left border border-gray-200">
+                <thead class="bg-gray-100 text-gray-700">
+                    <tr>
+                        <th class="p-3 border">#</th>
+                        <th class="p-3 border">Image</th>
+                        <th class="p-3 border">Predicted Class</th>
+                        <th class="p-3 border">Confidence</th>
+                        <th class="p-3 border">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in predictions %}
+                        <tr class="border-b hover:bg-gray-50">
+                            <td class="p-3 border">{{ forloop.counter }}</td>
+                            <td class="p-3 border">
+                                <img src="{{ item.image.url }}" class="w-20 rounded shadow" />
+                            </td>
+                            <td class="p-3 border">{{ item.predicted_class }}</td>
+                            <td class="p-3 border">{{ item.confidence }}%</td>
+                            <td class="p-3 border">{{ item.date|date:"M d, Y H:i" }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <p class="text-gray-600">You haven’t made any predictions yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

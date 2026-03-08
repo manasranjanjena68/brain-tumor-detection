@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load static %} <!-- Ensure static is loaded if needed for other elements -->
+
+{% block title %}Prediction Result{% endblock %}
+
+{% block content %}
+<!-- Apply gradient background, padding, shadow, rounded corners, hover effect, and margin -->
+<main class="bg-gradient-to-br from-blue-900 to-black py-16 px-4 text-white">
+<main class="bg-gradient-to-br from-blue-900 to-black py-16 px-4 text-white">
+<div class="max-w-xl mx-auto bg-gradient-to-br from-blue-900 to-black p-8 shadow-2xl rounded-xl transform transition duration-500 hover:scale-[1.02] mt-10 border border-blue-700 border-opacity-50 text-center text-white">
+
+    <!-- Enhance heading -->
+    <h2 class="text-3xl font-extrabold text-white mb-8 text-center animate-pulse">
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-blue-300">
+            Prediction Analysis
+        </span>
+    </h2>
+
+    <!-- Style the image -->
+    <img src="{{ image_path }}" alt="Uploaded MRI Scan" class="mx-auto w-64 h-64 object-cover rounded-lg shadow-lg border-2 border-blue-400 border-opacity-60 mb-6 animate-zoom-in">
+
+    <!-- Style the result text -->
+    <div class="mb-4 animate-fade-in">
+        <p class="text-lg font-semibold text-blue-100 mb-1">Result:</p>
+        <p class="text-2xl font-bold {% if result == 'Tumor Detected' %}text-red-400{% else %}text-green-400{% endif %}">
+            {{ result }}
+        </p>
+    </div>
+
+    <!-- Style the confidence text -->
+    <div class="mb-6 animate-fade-in" style="animation-delay: 0.2s;">
+        <p class="text-md font-medium text-blue-200 mb-1">Confidence Score:</p>
+        <div class="w-full bg-gray-700 rounded-full h-2.5 mb-1">
+            <!-- Define CSS variable in style, use it in class for width -->
+            <div class="bg-gradient-to-r from-cyan-400 to-blue-500 h-2.5 rounded-full w-[var(--confidence-percent)]" 
+                 style="--confidence-percent: {{ confidence|default:0 }}%;"></div>
+        </div>
+        <p class="text-lg font-semibold text-blue-100">{{ confidence|default:0 }}%</p>
+    </div>
+
+    <!-- Style the buttons/links -->
+    <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4 mt-8 animate-fade-in-up">
+        <a href="{% url 'predict' %}" class="inline-block bg-white text-blue-700 font-bold px-6 py-3 rounded-lg shadow-md hover:bg-blue-50 hover:shadow-lg transition-all duration-300 transform hover:scale-[1.05] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-opacity-50">
+            🔄 Try Another Scan
+        </a>
+
+        <a href="{{ pdf_url }}" target="_blank" class="inline-block bg-gradient-to-r from-green-500 to-teal-600 text-white font-bold px-6 py-3 rounded-lg shadow-md hover:from-green-600 hover:to-teal-700 hover:shadow-lg transition-all duration-300 transform hover:scale-[1.05] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-green-300 focus:ring-opacity-50">
+            📄 Download AI Report (PDF)
+        </a>
+    </div>
+
+    <!-- Footer text -->
+    <p class="text-blue-200 text-sm mt-8 animate-fade-in" style="animation-delay: 0.4s;">
+        If you have any questions, feel free to <a href="{% url 'contact' %}" class="text-cyan-400 hover:text-cyan-300 hover:underline font-semibold">contact us</a>.
+    </p>
+    <p class="text-blue-300 text-xs mt-2 animate-fade-in" style="animation-delay: 0.5s;">
+        Thank you for using our AI analysis tool!
+    </p>
+</div>
+
+<!-- Add some basic CSS animations (can be placed in base.html or a CSS file) -->
+<style>
+    @keyframes fade-in-down {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fade-in-up {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fade-in {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+     @keyframes zoom-in {
+        from { opacity: 0; transform: scale(0.9); }
+        to { opacity: 1; transform: scale(1); }
+    }
+    .animate-fade-in-down { animation: fade-in-down 0.5s ease-out forwards; }
+    .animate-fade-in-up { animation: fade-in-up 0.5s ease-out forwards; animation-delay: 0.3s; opacity: 0; /* Start hidden */}
+    .animate-fade-in { animation: fade-in 0.6s ease-out forwards; opacity: 0; /* Start hidden */}
+    .animate-zoom-in { animation: zoom-in 0.5s ease-out forwards; opacity: 0; /* Start hidden */}
+</style>
+
+{% endblock %}

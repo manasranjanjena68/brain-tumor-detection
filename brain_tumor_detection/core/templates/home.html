@@ -1,0 +1,246 @@
+{% extends "base.html" %}
+
+{% block title %}Home - NeuroCare{% endblock %}
+
+{% block content %}
+<!-- Hero Section with Enhanced Styling - Dark Background with Brain Image -->
+<div class="bg-gradient-to-r from-blue-800 from-50% to-black to-50% text-white pt-16 pb-6 min-h-[90vh] flex items-center animate__animated animate__fadeIn relative overflow-hidden -mt-16">
+    <div class="w-full flex flex-col md:flex-row items-center justify-between">
+        <!-- Left Side Text Content -->
+        <div class="md:w-1/2 z-10 pl-8 md:pl-16 lg:pl-24">
+            <h1 class="text-5xl md:text-6xl font-bold mb-4 font-serif italic animate__animated animate__fadeInUp">Revolutionizing<br>Brain Tumor</h1>
+            <p class="text-lg md:text-xl mb-8 max-w-xl text-gray-300 animate__animated animate__fadeInUp animate__delay-1s">
+                Welcome to our state-of-the-art website dedicated to early detection and diagnosis of brain tumors using advanced MRI imaging technology
+            </p>
+            <a href="/predict" class="inline-block bg-yellow-500 text-black px-8 py-3 rounded-full font-semibold text-lg hover:bg-yellow-600 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl animate__animated animate__fadeIn animate__delay-2s">Explore Now</a>
+        </div>
+        
+        <!-- Right Side Brain Image with matching background gradient overlay -->
+        <div class="md:w-1/2 mt-12 md:mt-0 relative animate__animated animate__fadeIn pr-8 md:pr-16 lg:pr-24">
+            <div class="relative rounded-xl overflow-hidden">
+                <!-- Background gradient overlay to match page gradient exactly -->
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-800 from-50% to-black to-50% opacity-60"></div>
+                <img src="static/images/ree.png" alt="Brain Scan Visualization" class="w-full relative z-10 mix-blend-luminosity">
+            </div>
+        </div>
+    </div>
+    
+    <!-- Optional gradient overlay for depth -->
+    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-30"></div>
+</div>
+
+<!-- Early Detection Section - Matching the Image UI -->
+<div class="bg-gray-900 py-16">
+    <div class="container mx-auto px-8 md:px-16 lg:px-24">
+        <div class="flex flex-col md:flex-row items-center">
+            <!-- Left Side - Brain Image -->
+            <div class="md:w-1/2 mb-8 md:mb-0 animate__animated animate__fadeInLeft">
+                <div class="relative rounded-lg overflow-hidden shadow-2xl hover:shadow-blue-500/30 hover:scale-[1.02] transition-all duration-500">
+                    <img src="/static/images/reee.png" alt="Brain Scan Visualization" 
+                         class="w-full object-cover">
+                    <!-- Optional overlay for the glowing effect -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-pink-500/20"></div>
+                </div>
+            </div>
+            
+            <!-- Right Side - Text Content -->
+            <div class="md:w-1/2 md:pl-12 animate__animated animate__fadeInRight">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white font-serif italic animate__animated animate__fadeInUp">
+                    Unlock the Power of<br>Early Detection
+                </h2>
+                <p class="text-lg text-gray-300 mb-8 animate__animated animate__fadeInUp animate__delay-1s">
+                    Cutting-edge AI algorithms analyze MRI scans, 
+                    pinpointing signs of brain tumors with unparalleled 
+                    accuracy
+                </p>
+                <a href="/about" class="inline-block bg-yellow-500 text-black px-8 py-3 rounded-full font-semibold text-lg hover:bg-yellow-600 hover:scale-105 transition-all duration-300 shadow-lg animate__animated animate__fadeIn animate__delay-2s">
+                    Learn More
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Empowering Patients Section -->
+<div class="bg-gray-900 py-16">
+    <div class="container mx-auto px-8 md:px-16 lg:px-24 flex flex-col md:flex-row items-center">
+        <!-- Left Side - Text Content -->
+        <div class="md:w-1/2 text-white animate__animated animate__fadeInLeft">
+            <h2 class="text-4xl font-bold mb-6">Empowering Patients</h2>
+            <p class="text-lg text-gray-300 mb-8">
+                At the heart of our mission is a deep commitment to empowering patients and revolutionizing the way brain tumors are detected and managed.
+            </p>
+            <a href="/about" class="inline-block bg-yellow-500 text-black px-8 py-3 rounded-full font-semibold text-lg hover:bg-yellow-600 hover:scale-105 transition-all duration-300 shadow-lg animate__animated animate__fadeInUp animate__delay-1s">
+                Join the Revolution
+            </a>
+        </div>
+        
+        <!-- Right Side - Brain Image -->
+        <div class="md:w-1/2 mt-8 md:mt-0 animate__animated animate__fadeInRight">
+            <div class="relative rounded-lg overflow-hidden shadow-2xl hover:shadow-blue-500/30 hover:scale-[1.02] transition-all duration-500">
+                <img src="/static/images/rei.png" alt="Brain Visualization" class="w-full object-cover">
+                <!-- Optional overlay for glowing effect -->
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-pink-500/20"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- New Section - Pioneering the Future -->
+<div class="bg-gray-900 py-16">
+    <div class="container mx-auto px-8 md:px-16 lg:px-24 flex flex-col md:flex-row items-center">
+        <!-- Left Side - Brain Image -->
+        <div class="md:w-1/2 mb-8 md:mb-0 animate__animated animate__fadeInLeft">
+            <div class="relative rounded-lg overflow-hidden shadow-2xl hover:shadow-blue-500/30 hover:scale-[1.02] transition-all duration-500">
+                <img src="/static/images/brain.png" alt="Brain Visualization" class="w-full object-cover">
+                <!-- Optional overlay for glowing effect -->
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-pink-500/20"></div>
+            </div>
+        </div>
+
+        <!-- Right Side - Text Content -->
+        <div class="md:w-1/2 md:pl-12 animate__animated animate__fadeInRight">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white font-serif italic animate__animated animate__fadeInUp">
+                Pioneering the Future of<br>Brain Tumor Diagnosis
+            </h2>
+            <p class="text-lg text-gray-300 mb-8 animate__animated animate__fadeInUp animate__delay-1s">
+                Our multidisciplinary team of medical experts, data scientists, and software engineers have dedicated themselves to developing a groundbreaking AI-powered solution that transforms brain tumor detection.
+            </p>
+            <a href="/about" class="inline-block bg-yellow-500 text-black px-8 py-3 rounded-full font-semibold text-lg hover:bg-yellow-600 hover:scale-105 transition-all duration-300 shadow-lg animate__animated animate__fadeIn animate__delay-2s">
+                Discover More
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- New Section - Unlocking the Secrets -->
+<div class="bg-gray-900 py-16">
+    <div class="container mx-auto px-8 md:px-16 lg:px-24 flex flex-col md:flex-row items-center">
+        <!-- Left Side - Text Content -->
+        <div class="md:w-1/2 md:pr-12 animate__animated animate__fadeInLeft">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white font-serif italic animate__animated animate__fadeInUp">
+                Unlocking the<br>Secrets of the Brain
+            </h2>
+            <p class="text-lg text-gray-300 mb-8 animate__animated animate__fadeInUp animate__delay-1s">
+                The human brain is a complex and fascinating organ, and understanding its inner workings is crucial to addressing the challenges posed by brain tumors.
+            </p>
+            <a href="/about" class="inline-block bg-yellow-500 text-black px-8 py-3 rounded-full font-semibold text-lg hover:bg-yellow-600 hover:scale-105 transition-all duration-300 shadow-lg animate__animated animate__fadeIn animate__delay-2s">
+                Explore the Brain
+            </a>
+        </div>
+
+        <!-- Right Side - Brain Image -->
+        <div class="md:w-1/2 mt-8 md:mt-0 animate__animated animate__fadeInRight">
+            <div class="relative rounded-lg overflow-hidden shadow-2xl hover:shadow-blue-500/30 hover:scale-[1.02] transition-all duration-500">
+                <img src="/static/images/brain2.png" alt="Brain Visualization" class="w-full object-cover">
+                <!-- Optional overlay for glowing effect -->
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-pink-500/20"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Introduction and Features Section -->
+<div class="bg-gray-900 py-12">
+    <div class="w-full flex flex-col md:flex-row items-center gap-8 px-8 md:px-16 lg:px-24">
+        <!-- Left Side - Problem Solving Info -->
+        <div class="md:w-1/2 animate__animated animate__fadeInLeft flex flex-col h-96">
+            <h2 class="text-3xl font-bold mb-6 text-white">How This System Helps</h2>
+            <div class="space-y-2 overflow-y-auto pr-2">
+                <div class="bg-gray-800 p-4 rounded-lg border-l-4 border-yellow-500 hover:scale-105 transition-all duration-300">
+                    <h3 class="font-bold text-xl text-yellow-400">Early Detection</h3>
+                    <p class="text-gray-300">Our AI system helps identify brain tumors at early stages, increasing treatment success rates.</p>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-lg border-l-4 border-yellow-500 hover:scale-105 transition-all duration-300">
+                    <h3 class="font-bold text-xl text-yellow-400">Accurate Classification</h3>
+                    <p class="text-gray-300">Distinguishes between different types of brain tumors with high precision.</p>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-lg border-l-4 border-yellow-500 hover:scale-105 transition-all duration-300">
+                    <h3 class="font-bold text-xl text-yellow-400">Fast Results</h3>
+                    <p class="text-gray-300">Get analysis results within seconds, helping medical professionals make quicker decisions.</p>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-lg border-l-4 border-yellow-500 hover:scale-105 transition-all duration-300">
+                    <h3 class="font-bold text-xl text-yellow-400">Support for Medical Professionals</h3>
+                    <p class="text-gray-300">Serves as a reliable second opinion tool for radiologists and neurologists.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right Side - Image Slider -->
+        <div class="md:w-1/2 mt-8 animate__animated animate__fadeInRight">
+            <div class="image-slider relative h-96 overflow-hidden rounded-xl shadow-xl">
+                <div class="slides flex transition-transform duration-700 ease-in-out">
+                    <img src="/static/images/doctors-analyzing-brain-scans_161362-84911.jpg" alt="Brain MRI Scan" class="min-w-full h-96 object-cover">
+                    <img src="/static/images/GettyImages-548556991-596256eb3df78cdc68baa7be.jpg" alt="Brain Tumor Detection" class="min-w-full h-96 object-cover">
+                    <img src="/static/images/computer-screen-presents-detailed-visual-representation-brain-scan-artificial-intelligence-analyzing-ai-generated-306374140.webp" alt="AI Analysis" class="min-w-full h-96 object-cover">
+                    <img src="/static/images/doctors-looking-at-brain-scans.webp" alt="Medical Technology" class="min-w-full h-96 object-cover">
+                    <img src="/static/images/download.jpg" alt="Healthcare Innovation" class="min-w-full h-96 object-cover">
+                </div>
+                <div class="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
+                    <span class="w-3 h-3 bg-white rounded-full opacity-50 cursor-pointer dot active"></span>
+                    <span class="w-3 h-3 bg-white rounded-full opacity-50 cursor-pointer dot"></span>
+                    <span class="w-3 h-3 bg-white rounded-full opacity-50 cursor-pointer dot"></span>
+                    <span class="w-3 h-3 bg-white rounded-full opacity-50 cursor-pointer dot"></span>
+                    <span class="w-3 h-3 bg-white rounded-full opacity-50 cursor-pointer dot"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Call to Action -->
+<div class="bg-black py-12 text-center">
+    <div class="w-full px-8 md:px-16 lg:px-24">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4 animate__animated animate__fadeInUp text-white">Ready to analyze your MRI scans?</h2>
+        <p class="text-lg text-gray-400 mb-8 animate__animated animate__fadeInUp animate__delay-1s">Our AI-powered system is ready to help with fast and accurate predictions</p>
+        <a href="/predict" class="inline-block bg-yellow-500 text-black px-8 py-3 rounded-lg hover:bg-yellow-600 hover:scale-105 transition-all duration-300 shadow-md animate__animated animate__pulse animate__delay-2s font-semibold">Go to Prediction</a>
+    </div>
+</div>
+
+<!-- Image Slider Script -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const slider = document.querySelector('.slides');
+        const dots = document.querySelectorAll('.dot');
+        let currentSlide = 0;
+        const slideCount = 5; // Number of slides
+        
+        // Set initial position
+        slider.style.transform = 'translateX(0)';
+        
+        // Auto slide function
+        function autoSlide() {
+            currentSlide = (currentSlide + 1) % slideCount;
+            updateSlider();
+        }
+        
+        // Update slider position and dots
+        function updateSlider() {
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('opacity-100', index === currentSlide);
+                dot.classList.toggle('opacity-50', index !== currentSlide);
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+        
+        // Add click event to dots
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                updateSlider();
+                resetInterval();
+            });
+        });
+        
+        // Set interval for auto sliding
+        let slideInterval = setInterval(autoSlide, 3000);
+        
+        // Reset interval when manually changing slides
+        function resetInterval() {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(autoSlide, 3000);
+        }
+    });
+</script>
+{% endblock %}

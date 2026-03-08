@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About - Brain Tumor Detection{% endblock %}
+
+{% block content %}
+<main class="bg-gradient-to-br from-blue-900 to-black py-16 px-4 text-white">
+    <div class="max-w-7xl mx-auto">
+        
+        <!-- Typewriter Heading -->
+        <h1 class="text-4xl md:text-5xl font-bold text-center mb-6 font-mono">
+            <span id="typewriter-about"></span><span class="border-r-2 border-white ml-1 animate-pulse"></span>
+        </h1>
+
+        <p class="text-lg text-center text-gray-300 mb-12 max-w-3xl mx-auto animate-slide-up">
+            NeuroCare is a smart and AI-powered web platform designed to assist in the early detection of brain tumors using MRI images. Our goal is to bridge the gap between patients and early diagnosis by providing fast, accurate, and accessible predictions.
+        </p>
+
+        <!-- Why Section -->
+        <div class="grid md:grid-cols-2 gap-10 items-center">
+            <div class="animate-slide-left">
+                <h2 class="text-2xl font-semibold text-white mb-4">Why NeuroCare?</h2>
+                <p class="text-gray-300 mb-4">
+                    Early detection of brain tumors is critical for successful treatment. However, access to neurologists and diagnostic tools can be limited. BrainScan uses deep learning models trained on MRI datasets to detect brain tumors with high accuracy in just a few seconds.
+                </p>
+                <ul class="list-disc list-inside text-gray-200 space-y-2">
+                    <li>AI-powered detection system</li>
+                    <li>Quick MRI scan analysis</li>
+                    <li>User-friendly interface</li>
+                    <li>No doctor consultation needed for initial checks</li>
+                </ul>
+            </div>
+            <div class="animate-slide-right">
+                <img src="{% static 'images/doctor.png' %}" alt="AI Doctor" class="rounded-lg shadow-xl border border-white/10">
+            </div>
+        </div>
+
+        <!-- Tech Stack Section -->
+        <div class="mt-16">
+            <h2 class="text-2xl font-semibold text-center text-white mb-6 animate-fade-in">💻 Technology Stack</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center text-white">
+                <div class="p-4 border border-white/10 rounded-lg bg-blue-800 bg-opacity-40 shadow hover:shadow-md transition hover:bg-blue-700">
+                    <span class="font-bold block mb-2">Frontend</span>
+                    <span>HTML, CSS, JavaScript, Tailwind CSS</span>
+                </div>
+                <div class="p-4 border border-white/10 rounded-lg bg-blue-800 bg-opacity-40 shadow hover:shadow-md transition hover:bg-blue-700">
+                    <span class="font-bold block mb-2">Backend</span>
+                    <span>Django (Python)</span>
+                </div>
+                <div class="p-4 border border-white/10 rounded-lg bg-blue-800 bg-opacity-40 shadow hover:shadow-md transition hover:bg-blue-700">
+                    <span class="font-bold block mb-2">AI Model</span>
+                    <span>TensorFlow + VGG16</span>
+                </div>
+                <div class="p-4 border border-white/10 rounded-lg bg-blue-800 bg-opacity-40 shadow hover:shadow-md transition hover:bg-blue-700">
+                    <span class="font-bold block mb-2">Database</span>
+                    <span>SQLite</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Button -->
+        <div class="mt-16 text-center">
+            <a href="/predict" class="inline-block bg-yellow-400 text-black px-6 py-3 rounded-md font-semibold shadow hover:bg-yellow-500 transition animate-bounce">
+                Try Prediction Now
+            </a>
+        </div>
+    </div>
+</main>
+
+<!-- Typewriter Script -->
+<script>
+  const text = "About NeuroCare";
+  let i = 0;
+  const speed = 80;
+
+  function typeWriterAbout() {
+    if (i < text.length) {
+      document.getElementById("typewriter-about").innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typeWriterAbout, speed);
+    }
+  }
+
+  window.addEventListener("DOMContentLoaded", typeWriterAbout);
+</script>
+{% endblock %}

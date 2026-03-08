@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Brain Tumor Chatbot</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .fade-in {
+      animation: fadeIn 0.5s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body class="bg-gradient-to-br from-blue-50 to-purple-100 min-h-screen flex items-center justify-center py-10 px-4">
+
+  <div class="w-full max-w-2xl bg-white rounded-3xl shadow-2xl overflow-hidden fade-in">
+    
+    <!-- Chatbot Header -->
+    <div class="bg-blue-700 text-white text-center py-4 text-2xl font-bold">
+      🧠 NeuroBot Assistant
+    </div>
+
+    <!-- Chat Area -->
+    <div id="chat-box" class="h-[450px] overflow-y-auto bg-gray-50 px-6 py-4 space-y-4 scroll-smooth">
+      {% for chat in history %}
+        <div class="space-y-2 fade-in">
+          <div class="flex justify-start">
+            <div class="bg-blue-100 text-gray-900 px-4 py-2 rounded-2xl max-w-xs w-fit shadow-sm">
+              👤 <strong>You:</strong> {{ chat.question }}
+            </div>
+          </div>
+          <div class="flex justify-end">
+            <div class="bg-green-100 text-gray-900 px-4 py-2 rounded-2xl max-w-xs w-fit shadow-sm">
+              🤖 <strong>Bot:</strong> {{ chat.answer }}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Input Area -->
+    <div class="flex items-center gap-2 border-t border-gray-200 bg-white px-4 py-3">
+      <button onclick="startListening()" class="text-purple-600 hover:text-purple-800 text-2xl">🎤</button>
+      <input id="question-input" type="text" placeholder="Ask something..."
+             class="flex-1 px-4 py-2 text-gray-800 bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400 transition" />
+      <button onclick="sendQuestion()"
+              class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-full transition">
+        Send
+      </button>
+    </div>
+
+  </div>
+
+<script>
+  // Ensure scrolling when page loads
+  document.addEventListener('DOMContentLoaded', function() {
+    const chatBox = document.getElementById("chat-box");
+    if (chatBox) {
+      chatBox.scrollTop = chatBox.scrollHeight + 1000;
+    }
+  });
+
+  function sendQuestion() {
+    const input = document.getElementById("question-input");
+    const question = input.value.trim();
+    if (!question) return;
+
+    const chatBox = document.getElementById("chat-box");
+
+    const userBubble = document.createElement("div");
+    userBubble.className = "flex justify-start fade-in";
+    userBubble.innerHTML = `
+      <div class="bg-blue-100 text-gray-900 px-4 py-2 rounded-2xl max-w-xs w-fit shadow-sm">
+        👤 <strong>You:</strong> ${question}
+      </div>
+    `;
+    chatBox.appendChild(userBubble);
+
+    // More aggressive scroll
+    chatBox.scrollTop = chatBox.scrollHeight + 1000;
+
+    fetch("{% url 'ask_chatbot' %}", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": "{{ csrf_token }}"
+      },
+      body: JSON.stringify({ question })
+    })
+    .then(response => {
+      if (!response.ok) throw new Error("Server error");
+      return response.json();
+    })
+    .then(data => {
+      const answer = data.answer || "⚠️ No response.";
+      const botBubble = document.createElement("div");
+      botBubble.className = "flex justify-end fade-in";
+      botBubble.innerHTML = `
+        <div class="bg-green-100 text-gray-900 px-4 py-2 rounded-2xl max-w-xs w-fit shadow-sm">
+          🤖 <strong>Bot:</strong> ${answer}
+        </div>
+      `;
+      chatBox.appendChild(botBubble);
+
+      // Multiple scroll attempts with timeouts
+      for (let i = 0; i < 3; i++) {
+        setTimeout(() => {
+          chatBox.scrollTop = chatBox.scrollHeight + 1000;
+        }, 100 * i + 100);
+      }
+    })
+    .catch(error => {
+      const errorMsg = document.createElement("div");
+      errorMsg.className = "text-center text-red-600 text-sm mt-2";
+      errorMsg.textContent = `❌ Error: ${error.message}`;
+      chatBox.appendChild(errorMsg);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    });
+
+    input.value = "";
+  }
+
+  // Add event listener for Enter key
+  document.getElementById("question-input").addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      sendQuestion();
+    }
+  });
+
+  function startListening() {
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = "en-US";
+    recognition.onresult = function(event) {
+      const transcript = event.results[0][0].transcript;
+      document.getElementById("question-input").value = transcript;
+      sendQuestion();
+    };
+    recognition.start();
+  }
+</script>
+
+</body>
+</html>
